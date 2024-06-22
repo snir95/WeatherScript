@@ -1,0 +1,13 @@
+{
+  "name": "rise-weather-div",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "parcel build src/index.html --out-dir dist",
+    "start": "parcel src/index.html --open"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0",
+    "typescript": "^4.0.0"
+  }
+}

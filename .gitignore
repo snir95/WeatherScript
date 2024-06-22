@@ -1,0 +1,9 @@
+node_modules/
+dist/
+onment files
+.env
+e parcel cache
+.cache/
+.idea/
+.vscode/
+*.tsbuildinfo
