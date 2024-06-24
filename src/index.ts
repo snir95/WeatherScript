@@ -1,5 +1,5 @@
 async function fetchWeatherData(location: string): Promise<any> {
-  const apiKey = '9d90761ff55a4fada43191931242206'; // Replace with your actual WeatherAPI.com API key
+  const apiKey = '9d90761ff55a4fada43191931242206'; // would be hidden on real production.
   const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=14&aqi=no&alerts=no`;
 
   try {
@@ -62,7 +62,7 @@ function createWeatherDiv(containerId?: string) {
   if (!container) {
     // Create a container div if it doesn't exist
     container = document.createElement('div');
-    container.id = containerId || 'weatherContainer'; // Use provided ID or a default ID
+    container.id = containerId || 'weatherContainer'; 
     document.body.appendChild(container);
   }
 
@@ -89,7 +89,6 @@ function createWeatherDiv(containerId?: string) {
   output.id = 'weatherOutput';
   div.appendChild(output);
 
-  // Move the creation and appending of the style element outside of the event listener
   const styles = `
     #weatherDiv {
       font-family: Arial, sans-serif;
@@ -219,8 +218,3 @@ if (!containerDiv) {
 
 // Initialize the weather div
 createWeatherDiv('container');
-
-// todo : 
-//  2.add a picture to each condition?
-//  3.maybe make an enum of possible city names 
-//  5.make a defense for the option of other divs overlaps

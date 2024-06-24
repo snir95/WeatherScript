@@ -49,7 +49,7 @@
 82C:\Users\snir\job interviews\rise\node_modules\typescript\lib\tsserverlibrary.d.ts133635524368975604 0
 71C:\Users\snir\job interviews\rise\node_modules\abortcontroller-polyfill133635524371735611 1
 112C:\Users\snir\job interviews\rise\node_modules\@swc\helpers\src\_class_check_private_static_field_descriptor.mjs133635524373085616 0
-38C:\Users\snir\job interviews\rise\dist133637453335617528 1
+38C:\Users\snir\job interviews\rise\dist133637454809139994 1
 88C:\Users\snir\job interviews\rise\node_modules\@parcel\optimizer-swc\lib\SwcOptimizer.js133635524393215636 0
 64C:\Users\snir\job interviews\rise\node_modules\parcel\lib\bin.js133635524397555638 0
 82C:\Users\snir\job interviews\rise\node_modules\@parcel\runtime-js\src\helpers\node133635524389795627 1
@@ -84,7 +84,7 @@
 51C:\Users\snir\job interviews\rise\node_modules\svgo133635524378825614 1
 70C:\Users\snir\job interviews\rise\node_modules\@lezer\lr\dist\index.js133635524373435613 0
 67C:\Users\snir\job interviews\rise\node_modules\typescript\lib\pt-br133635524368275603 1
-46C:\Users\snir\job interviews\rise\src\index.ts133637453335268585 0
+46C:\Users\snir\job interviews\rise\src\index.ts133637454813272273 0
 68C:\Users\snir\job interviews\rise\node_modules\braces\lib\compile.js133635524362985601 0
 52C:\Users\snir\job interviews\rise\node_modules\chalk133635524363525602 1
 98C:\Users\snir\job interviews\rise\node_modules\caniuse-lite\data\features\dom-manip-convenience.js133635524367665614 0
@@ -370,7 +370,7 @@
 74C:\Users\snir\job interviews\rise\node_modules\lightningcss-win32-x64-msvc133635524368445604 1
 63C:\Users\snir\job interviews\rise\node_modules\svgo\lib\xast.js133635524378825614 0
 83C:\Users\snir\job interviews\rise\node_modules\caniuse-lite\data\features\canvas.js133635524365835603 0
-49C:\Users\snir\job interviews\rise\dist\index.html133637452336382394 0
+49C:\Users\snir\job interviews\rise\dist\index.html133637454808950626 0
 123C:\Users\snir\job interviews\rise\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\syntax\config\walker.js133635524366185610 0
 65C:\Users\snir\job interviews\rise\node_modules\js-tokens\index.js133635524363065608 0
 81C:\Users\snir\job interviews\rise\node_modules\caniuse-lite\dist\lib\supported.js133635524370085604 0
@@ -3171,7 +3171,7 @@
 96C:\Users\snir\job interviews\rise\node_modules\csso\node_modules\css-tree\lib\parser\sequence.js133635524398485652 0
 99C:\Users\snir\job interviews\rise\node_modules\csso\node_modules\css-tree\lib\parser\SyntaxError.js133635524398525635 0
 73C:\Users\snir\job interviews\rise\node_modules\color-convert\CHANGELOG.md133635524362945640 0
-47C:\Users\snir\job interviews\rise\dist\index.js133637451454467083 0
+47C:\Users\snir\job interviews\rise\dist\index.js133637453983986376 0
 100C:\Users\snir\job interviews\rise\node_modules\csso\node_modules\css-tree\lib\lexer\generic-const.js133635524398105640 0
 94C:\Users\snir\job interviews\rise\node_modules\caniuse-lite\data\features\channel-messaging.js133635524365915602 0
 82C:\Users\snir\job interviews\rise\node_modules\@parcel\runtime-browser-hmr\LICENSE133635524390735638 0
@@ -4189,7 +4189,7 @@
 78C:\Users\snir\job interviews\rise\node_modules\caniuse-lite\data\regions\LA.js133635524368815605 0
 88C:\Users\snir\job interviews\rise\node_modules\caniuse-lite\data\features\css-hyphens.js133635524366605610 0
 76C:\Users\snir\job interviews\rise\node_modules\@swc\helpers\esm\_decorate.js133635524371685621 0
-59C:\Users\snir\job interviews\rise\dist\rise.59712999.js.map133637452336611627 0
+59C:\Users\snir\job interviews\rise\dist\rise.59712999.js.map133637454809139994 0
 80C:\Users\snir\job interviews\rise\node_modules\caniuse-lite\data\features\svg.js133635524370185610 0
 59C:\Users\snir\job interviews\rise\node_modules\.bin\tsc.cmd133635524416455659 0
 78C:\Users\snir\job interviews\rise\node_modules\caniuse-lite\data\regions\LB.js133635524368825604 0
@@ -5162,7 +5162,7 @@
 113C:\Users\snir\job interviews\rise\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\syntax\config133635524366185610 1
 75C:\Users\snir\job interviews\rise\node_modules\@parcel\transformer-html\src133635524383315626 1
 91C:\Users\snir\job interviews\rise\node_modules\@parcel\transformer-html\src\dependencies.js133635524383285623 0
-56C:\Users\snir\job interviews\rise\dist\index.377278e2.js133637453335597483 0
+56C:\Users\snir\job interviews\rise\dist\index.377278e2.js133637454809100122 0
 85C:\Users\snir\job interviews\rise\node_modules\@parcel\transformer-html\src\inline.js133635524383325621 0
 143C:\Users\snir\job interviews\rise\node_modules\@parcel\core\test\fixtures\local-plugin-config-pkg\node_modules\parcel-config-local\package.json133635524416055656 0
 100C:\Users\snir\job interviews\rise\node_modules\@parcel\transformer-html\node_modules\srcset\index.js133635524398875641 0
@@ -6143,5 +6143,5 @@
 60C:\Users\snir\job interviews\rise\node_modules\.bin\svgo.ps1133635524416465659 0
 64C:\Users\snir\job interviews\rise\node_modules\.bin\tsserver.ps1133635524416455659 0
 78C:\Users\snir\job interviews\rise\node_modules\.bin\update-browserslist-db.cmd133635524416495653 0
-55C:\Users\snir\job interviews\rise\dist\rise.59712999.js133637452336591693 0
-60C:\Users\snir\job interviews\rise\dist\index.377278e2.js.map133637453335617528 0
+55C:\Users\snir\job interviews\rise\dist\rise.59712999.js133637454809120057 0
+60C:\Users\snir\job interviews\rise\dist\index.377278e2.js.map133637454809130023 0
