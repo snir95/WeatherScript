@@ -1,5 +1,5 @@
 async function fetchWeatherData(location: string): Promise<any> {
-  const apiKey = '9d90761ff55a4fada43191931242206';
+  const apiKey = '9d90761ff55a4fada43191931242206'; // Replace 'YOUR_API_KEY' with your actual WeatherAPI.com API key
   const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=14&aqi=no&alerts=no`;
 
   try {
@@ -57,7 +57,7 @@ function createWeatherDiv(containerId?: string) {
   if (!container) {
     // Create a container div if it doesn't exist
     container = document.createElement('div');
-    container.id = containerId || 'weatherContainer'; 
+    container.id = containerId || 'weatherContainer'; // Use provided ID or a default ID
     document.body.appendChild(container);
   }
 
@@ -72,17 +72,19 @@ function createWeatherDiv(containerId?: string) {
 
   const input = document.createElement('input');
   input.type = 'text';
-  input.placeholder = 'Enter city name';
+  input.placeholder = 'Enter city name or coordinates (lat,lon)';
   div.appendChild(input);
 
   const button = document.createElement('button');
   button.innerText = 'Get Weather';
+  button.disabled = true; // Initially disable the button
   div.appendChild(button);
 
   const output = document.createElement('div');
   output.id = 'weatherOutput';
   div.appendChild(output);
 
+  // Move the creation and appending of the style element outside of the event listener
   const styles = `
     #weatherDiv {
       font-family: Arial, sans-serif;
@@ -98,7 +100,7 @@ function createWeatherDiv(containerId?: string) {
     #weatherDiv input[type="text"] {
       padding: 5px;
       margin-right: 10px;
-      width: 200px;
+      width: 300px;
     }
     #weatherDiv button {
       padding: 5px 10px;
@@ -131,15 +133,24 @@ function createWeatherDiv(containerId?: string) {
   styleElement.innerHTML = styles;
   document.head.appendChild(styleElement);
 
-  button.addEventListener('click', async () => {
+  let lastSubmittedLocation: string | null = null;
+
+  input.addEventListener('input', () => {
     const location = input.value;
-    if (!location) return;
+    button.disabled = !location || location === lastSubmittedLocation;
+  });
+
+  button.addEventListener('click', async () => {
+    const location = input.value.trim();
+    if (!location || location === lastSubmittedLocation) return;
 
     const data = await fetchWeatherData(location);
     if (!data) {
       output.innerHTML = 'Failed to fetch weather data. Please try again.';
       return;
     }
+
+    lastSubmittedLocation = location;
 
     const averageTemperatures = calculateAverageTemperatures(data);
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -186,12 +197,8 @@ if (!containerDiv) {
 // Initialize the weather div
 createWeatherDiv('container');
 
-
 // todo : 
-//  1.make the div affected by its given size - width +height
-//    a.make the scroll-x again 
 //  2.add a picture to each condition?
-//  3.disable or do nothing when form isnt dirty.
 //  4.add warning for wrong city name 
 //    a.maybe make an enum of possible city names 
 //  5.make a defense for the option of other divs overlaps
