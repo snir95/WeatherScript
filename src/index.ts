@@ -1,5 +1,5 @@
 async function fetchWeatherData(location: string): Promise<any> {
-  const apiKey = '9d90761ff55a4fada43191931242206'; // Replace 'YOUR_API_KEY' with your actual WeatherAPI.com API key
+  const apiKey = '9d90761ff55a4fada43191931242206';
   const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=14&aqi=no&alerts=no`;
 
   try {
@@ -14,9 +14,10 @@ async function fetchWeatherData(location: string): Promise<any> {
   }
 }
 
-function calculateAverageTemperatures(data: any): { [key: string]: { avgTemp: number, fullDate: string, condition: string } } {
+function calculateAverageTemperatures(data: any): { [key: string]: { avgTemp: number, fullDate: string, condition: string, icon: string } } {
   const dailyTemperatures: { [key: string]: number[] } = {};
   const dailyConditions: { [key: string]: string[] } = {};
+  const dailyIcons: { [key: string]: string[] } = {};
   const fullDates: { [key: string]: string[] } = {};
 
   data.forecast.forecastday.forEach((day: any) => {
@@ -26,24 +27,28 @@ function calculateAverageTemperatures(data: any): { [key: string]: { avgTemp: nu
     if (!dailyTemperatures[dayOfWeek]) {
       dailyTemperatures[dayOfWeek] = [];
       dailyConditions[dayOfWeek] = [];
+      dailyIcons[dayOfWeek] = [];
       fullDates[dayOfWeek] = [];
     }
     dailyTemperatures[dayOfWeek].push(day.day.avgtemp_c);
     dailyConditions[dayOfWeek].push(day.day.condition.text);
+    dailyIcons[dayOfWeek].push(day.day.condition.icon);
     fullDates[dayOfWeek].push(day.date);
   });
 
-  const averageTemperatures: { [key: string]: { avgTemp: number, fullDate: string, condition: string } } = {};
+  const averageTemperatures: { [key: string]: { avgTemp: number, fullDate: string, condition: string, icon: string } } = {};
   for (const day in dailyTemperatures) {
     const temperatures = dailyTemperatures[day];
     const conditions = dailyConditions[day];
+    const icons = dailyIcons[day];
     const dates = fullDates[day];
 
     const avgTemp = temperatures.reduce((acc, curr) => acc + curr, 0) / temperatures.length;
     averageTemperatures[day] = {
       avgTemp,
       fullDate: dates[0],
-      condition: conditions[0] // Assuming the condition of the first date to display
+      condition: conditions[0], // Assuming the condition of the first date to display
+      icon: icons[0] // Assuming the icon of the first date to display
     };
   }
 
@@ -57,7 +62,7 @@ function createWeatherDiv(containerId?: string) {
   if (!container) {
     // Create a container div if it doesn't exist
     container = document.createElement('div');
-    container.id = containerId || 'weatherContainer'; // Use provided ID or a default ID
+    container.id = containerId || 'weatherContainer'; 
     document.body.appendChild(container);
   }
 
@@ -77,14 +82,13 @@ function createWeatherDiv(containerId?: string) {
 
   const button = document.createElement('button');
   button.innerText = 'Get Weather';
-  button.disabled = true; // Initially disable the button
+  button.disabled = true;
   div.appendChild(button);
 
   const output = document.createElement('div');
   output.id = 'weatherOutput';
   div.appendChild(output);
 
-  // Move the creation and appending of the style element outside of the event listener
   const styles = `
     #weatherDiv {
       font-family: Arial, sans-serif;
@@ -93,9 +97,13 @@ function createWeatherDiv(containerId?: string) {
       border-radius: 5px;
       background-color: #f9f9f9;
       margin-bottom: 20px;
-      width: 100%;
+      width: 90%;
       height: 300px;
       overflow: auto;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10000; /* Ensure it's on top */
     }
     #weatherDiv input[type="text"] {
       padding: 5px;
@@ -122,13 +130,20 @@ function createWeatherDiv(containerId?: string) {
       padding: 10px;
       width: calc(100% / 3 - 20px); /* Responsive: 3 cards per row with a gap */
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
     .weatherCard h4, .weatherCard p {
       margin: 5px 0;
     }
+    .weatherCard img {
+      width: 50px;
+      height: 50px;
+    }
   `;
 
-  // Create a style element and append it to the head
   const styleElement = document.createElement('style');
   styleElement.innerHTML = styles;
   document.head.appendChild(styleElement);
@@ -162,6 +177,7 @@ function createWeatherDiv(containerId?: string) {
       const avgTemp = averageTemperatures[day].avgTemp.toFixed(2);
       const fullDate = averageTemperatures[day].fullDate;
       const condition = averageTemperatures[day].condition;
+      const icon = averageTemperatures[day].icon;
 
       const card = document.createElement('div');
       card.className = 'weatherCard';
@@ -173,6 +189,10 @@ function createWeatherDiv(containerId?: string) {
       const dateElement = document.createElement('p');
       dateElement.innerText = fullDate;
       card.appendChild(dateElement);
+
+      const iconElement = document.createElement('img');
+      iconElement.src = `https:${icon}`;
+      card.appendChild(iconElement);
 
       const conditionElement = document.createElement('p');
       conditionElement.innerText = condition;
@@ -199,8 +219,5 @@ createWeatherDiv('container');
 
 // todo : 
 //  2.add a picture to each condition?
-//  4.add warning for wrong city name 
-//    a.maybe make an enum of possible city names 
+//  3.maybe make an enum of possible city names 
 //  5.make a defense for the option of other divs overlaps
-//  6.add the option of coordinates instead of a city name
-//  7.fix the temp to be a proper avg of the next 2 weeks per day
