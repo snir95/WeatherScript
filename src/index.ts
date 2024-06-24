@@ -1,5 +1,5 @@
 async function fetchWeatherData(location: string): Promise<any> {
-  const apiKey = '9d90761ff55a4fada43191931242206';
+  const apiKey = '9d90761ff55a4fada43191931242206'; // Replace with your actual WeatherAPI.com API key
   const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=14&aqi=no&alerts=no`;
 
   try {
@@ -62,7 +62,7 @@ function createWeatherDiv(containerId?: string) {
   if (!container) {
     // Create a container div if it doesn't exist
     container = document.createElement('div');
-    container.id = containerId || 'weatherContainer'; 
+    container.id = containerId || 'weatherContainer'; // Use provided ID or a default ID
     document.body.appendChild(container);
   }
 
@@ -82,13 +82,14 @@ function createWeatherDiv(containerId?: string) {
 
   const button = document.createElement('button');
   button.innerText = 'Get Weather';
-  button.disabled = true;
+  button.disabled = true; // Initially disable the button
   div.appendChild(button);
 
   const output = document.createElement('div');
   output.id = 'weatherOutput';
   div.appendChild(output);
 
+  // Move the creation and appending of the style element outside of the event listener
   const styles = `
     #weatherDiv {
       font-family: Arial, sans-serif;
@@ -98,8 +99,7 @@ function createWeatherDiv(containerId?: string) {
       background-color: #f9f9f9;
       margin-bottom: 20px;
       width: 90%;
-      height: 300px;
-      overflow: auto;
+      height: inherit;
       position: fixed;
       top: 20px;
       right: 20px;
@@ -108,7 +108,7 @@ function createWeatherDiv(containerId?: string) {
     #weatherDiv input[type="text"] {
       padding: 5px;
       margin-right: 10px;
-      width: 300px;
+      width: 200px;
     }
     #weatherDiv button {
       padding: 5px 10px;
@@ -120,15 +120,17 @@ function createWeatherDiv(containerId?: string) {
     #weatherOutput {
       margin-top: 10px;
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
+      overflow-y: auto;
+
     }
     .weatherCard {
       border: 1px solid #ccc;
       border-radius: 5px;
       background-color: #f9f9f9;
       padding: 10px;
-      width: calc(100% / 3 - 20px); /* Responsive: 3 cards per row with a gap */
+      width: 100%; 
+      min-width: 200px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
@@ -144,6 +146,7 @@ function createWeatherDiv(containerId?: string) {
     }
   `;
 
+  // Create a style element and append it to the head
   const styleElement = document.createElement('style');
   styleElement.innerHTML = styles;
   document.head.appendChild(styleElement);
