@@ -120,10 +120,6 @@ Add the following script tag to the HTML of the website where you want to inject
         margin-bottom: 20px;
         width: 90%;
         height: inherit;
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 10000; /* Ensure it's on top */
       }
       #weatherDiv input[type="text"] {
         padding: 5px;
