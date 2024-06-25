@@ -21,7 +21,7 @@ Add the following script tag to the HTML of the website where you want to inject
 <script>
 (async function() {
   async function fetchWeatherData(location) {
-    const apiKey = '9d90761ff55a4fada43191931242206'; // Replace with your actual WeatherAPI.com API key
+    const apiKey = '9d90761ff55a4fada43191931242206';
     const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=14&aqi=no&alerts=no`;
 
     try {
@@ -69,8 +69,8 @@ Add the following script tag to the HTML of the website where you want to inject
       averageTemperatures[day] = {
         avgTemp,
         fullDate: dates[0],
-        condition: conditions[0], // Assuming the condition of the first date to display
-        icon: icons[0], // Assuming the icon of the first date to display
+        condition: conditions[0], 
+        icon: icons[0],
       };
     }
 
@@ -84,11 +84,10 @@ Add the following script tag to the HTML of the website where you want to inject
     if (!container) {
       // Create a container div if it doesn't exist
       container = document.createElement('div');
-      container.id = containerId || 'weatherContainer'; // Use provided ID or a default ID
+      container.id = containerId || 'weatherContainer';
       document.body.appendChild(container);
     }
 
-    // Check if #weatherDiv already exists, if so, return
     if (document.getElementById('weatherDiv')) {
       return;
     }
@@ -104,14 +103,13 @@ Add the following script tag to the HTML of the website where you want to inject
 
     const button = document.createElement('button');
     button.innerText = 'Get Weather';
-    button.disabled = true; // Initially disable the button
+    button.disabled = true; 
     div.appendChild(button);
 
     const output = document.createElement('div');
     output.id = 'weatherOutput';
     div.appendChild(output);
 
-    // Move the creation and appending of the style element outside of the event listener
     const styles = `
       #weatherDiv {
         font-family: Arial, sans-serif;
@@ -121,8 +119,7 @@ Add the following script tag to the HTML of the website where you want to inject
         background-color: #f9f9f9;
         margin-bottom: 20px;
         width: 90%;
-        height: 300px;
-        overflow-y: auto;
+        height: inherit;
         position: fixed;
         top: 20px;
         right: 20px;
@@ -131,7 +128,7 @@ Add the following script tag to the HTML of the website where you want to inject
       #weatherDiv input[type="text"] {
         padding: 5px;
         margin-right: 10px;
-        width: 300px;
+        width: 200px;
       }
       #weatherDiv button {
         padding: 5px 10px;
@@ -143,15 +140,17 @@ Add the following script tag to the HTML of the website where you want to inject
       #weatherOutput {
         margin-top: 10px;
         display: flex;
-        flex-direction: column; /* Stack the cards in a single row */
         gap: 10px;
+        overflow-y: auto;
+  
       }
       .weatherCard {
         border: 1px solid #ccc;
         border-radius: 5px;
         background-color: #f9f9f9;
         padding: 10px;
-        width: 100%; /* Full width of the container */
+        width: 100%; 
+        min-width: 200px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -165,9 +164,8 @@ Add the following script tag to the HTML of the website where you want to inject
         width: 50px;
         height: 50px;
       }
-    `;
+  `;
 
-    // Create a style element and append it to the head
     const styleElement = document.createElement('style');
     styleElement.innerHTML = styles;
     document.head.appendChild(styleElement);
@@ -238,7 +236,6 @@ Add the following script tag to the HTML of the website where you want to inject
     document.body.appendChild(container);
   }
 
-  // Initialize the weather div
   createWeatherDiv('container');
 })();
 </script>
