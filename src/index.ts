@@ -99,10 +99,9 @@ function createWeatherDiv(containerId?: string) {
       margin-bottom: 20px;
       width: 90%;
       height: inherit;
-      position: fixed;
       top: 20px;
       right: 20px;
-      z-index: 10000; /* Ensure it's on top */
+      z-index: 10000;
     }
     #weatherDiv input[type="text"] {
       padding: 5px;
