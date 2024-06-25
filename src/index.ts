@@ -56,13 +56,13 @@ function calculateAverageTemperatures(data: any): { [key: string]: { avgTemp: nu
 }
 
 function createWeatherDiv(containerId?: string) {
-  if (!containerId) return;
-  let container = document.getElementById(containerId);
+  const id = containerId || 'weatherContainer';
+  let container = document.getElementById(id);
 
   if (!container) {
     // Create a container div if it doesn't exist
     container = document.createElement('div');
-    container.id = containerId || 'weatherContainer'; 
+    container.id = id;
     document.body.appendChild(container);
   }
 
